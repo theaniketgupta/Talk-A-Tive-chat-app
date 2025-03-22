@@ -14,7 +14,12 @@ const app = express();
 app.use(express.json()); //To accept JSON data.
 
 const cors = require("cors");
-app.use(cors({ origin: "https://talk-a-tive-chatapp-eta.vercel.app" }));
+app.use(
+  cors({
+    origin: "https://talk-a-tive-chatapp-eta.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  })
+);
 
 // //------------Deployment----------------
 
