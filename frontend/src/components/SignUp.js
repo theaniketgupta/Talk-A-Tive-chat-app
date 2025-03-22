@@ -11,6 +11,7 @@ import {
 import React, { useState } from "react";
 import {useHistory} from "react-router-dom"
 import axios from 'axios';
+import { endpoint } from "../App";
 
 const SignUp = () => {
   const [show, setShow] = useState(false);
@@ -107,7 +108,7 @@ const SignUp = () => {
         },
       };
       const { data } = await axios.post(
-        "/api/user",
+        `${endpoint}/api/user`,
         { name, email, password, pic },
         config
       );

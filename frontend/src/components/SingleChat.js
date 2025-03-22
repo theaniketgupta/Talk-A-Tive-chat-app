@@ -19,6 +19,7 @@ import Lottie from "react-lottie";
 import io from "socket.io-client";
 import "../styles.css";
 import animationData from "../animations/typing.json";
+import { endpoint } from "../App";
 
 const ENDPOINT = "http://localhost:5000";
 var socket, selectedChatCompare;
@@ -87,7 +88,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         };
         setNewMessage("");
         const { data } = await axios.post(
-          "/api/message",
+          `${endpoint}/api/message`,
           {
             content: newMessage,
             chatId: selectedChat._id,
@@ -120,7 +121,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       };
       setLoading(true);
       const { data } = await axios.get(
-        `/api/message/${selectedChat._id}`,
+        `${endpoint}/api/message/${selectedChat._id}`,
         config
       );
       setMessages(data);

@@ -1,4 +1,5 @@
 const express = require("express");
+// const { chats } = require("./data/data");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const userRoutes = require("./routes/user.route");
@@ -10,24 +11,29 @@ dotenv.config();
 
 const app = express();
 
-app.use(express.json()); // To accept JSON data.
+app.use(express.json());
 
 const cors = require("cors");
-app.use(cors()); // Allow requests from any origin
+app.use(
+  cors({
+    origin: "https://talk-a-tive-chatapp-eta.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  })
+);
 
 // //------------Deployment----------------
 
-// const __dirname1 = path.resolve();
+// const __dirname1=path.resolve();
 
-// if (process.env.NODE_ENV === "production") {
+// if(process.env.NODE_ENV==="production"){
 //     app.use(express.static(path.join(__dirname1, "/frontend/build")))
 
-//     app.get("*", (req, res) => {
-//       res.sendFile(path.resolve(__dirname1, "frontend", "build", "index.html"))
+//     app.get("*", (req,res)=>{
+//       res.sendFile(path/resolve(__dirname1, "frontend", "build", "index.html"))
 //     })
-// } else {
+// } else{
 //   app.get("/", (req, res) => {
-//     res.send("API is running");
+//     res.send("api is running");
 //   });
 // }
 
@@ -46,7 +52,7 @@ const server = app.listen(PORT, console.log(`Server started on PORT ${PORT}`));
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "*", // Allow requests from any origin for socket.io
+    origin: "https://talk-a-tive-chatapp-eta.vercel.app",
   },
 });
 
