@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://talk-a-tive-chat-app-du4i.onrender.com/api/:path*"
+    }
+  ]
+}
