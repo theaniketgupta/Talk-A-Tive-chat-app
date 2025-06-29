@@ -14,13 +14,13 @@ const app = express();
 app.use(express.json());
 
 const cors = require("cors");
-app.use(
-  cors({
-    origin: "https://talk-a-tive-chatapp-eta.vercel.app",
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  })
-);
-
+// app.use(
+//   cors({
+//     origin: "https://talk-a-tive-chatapp-eta.vercel.app",
+//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//   })
+// );
+app.use(cors());
 // //------------Deployment----------------
 
 // const __dirname1=path.resolve();
